@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="b135d21" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.4.0" camunda:diagramRelationId="28dce489-ff4e-43cb-8d90-2be5fb4bd5ef">
+  <bpmn:process id="Process_1a5z4vh" name="Holday Party Planner" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_0ifd2ee">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "b135d21"
+  },
+  "schemaVersion": 13,
+  "id": "Form_17w6v75",
+  "components": [
+    {
+      "text": "# You are invited to this year's holiday party!",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0sjlbcz",
+        "columns": null
+      },
+      "id": "Field_0cwv2j2"
+    },
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        },
+        {
+          "label": "No",
+          "value": "no"
+        }
+      ],
+      "label": "Are you able to attend?",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0t05q4w",
+        "columns": null
+      },
+      "id": "Field_0nyljre",
+      "key": "canAttend"
+    },
+    {
+      "label": "Dietry Restrictions? List them here",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0n45dzk",
+        "columns": null
+      },
+      "id": "Field_0mak5us",
+      "key": "dietaryRestrictions",
+      "conditional": {
+        "hide": "=canAttend != \"yes\" or null"
+      }
+    },
+    {
+      "text": "### Please enter your info to receive your holiday gift",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_13s4xqm",
+        "columns": null
+      },
+      "id": "Field_0w5kgvz"
+    },
+    {
+      "label": "Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0d77aj1",
+        "columns": null
+      },
+      "id": "Field_0ohlosr",
+      "key": "name"
+    },
+    {
+      "label": "Phone number (Please include country code - e.g. +17205555432)",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_03og8k6",
+        "columns": null
+      },
+      "id": "Field_0164trb",
+      "key": "phoneNumber"
+    },
+    {
+      "label": "Address",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0z2z6ay",
+        "columns": null
+      },
+      "id": "Field_0hzdpmm",
+      "key": "address"
+    },
+    {
+      "label": "City",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1daff9c",
+        "columns": null
+      },
+      "id": "Field_0tqt9gx",
+      "key": "city"
+    },
+    {
+      "label": "State or Province",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1d5l10w",
+        "columns": null
+      },
+      "id": "Field_0hbw4wx",
+      "key": "state"
+    },
+    {
+      "label": "Zip Code",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_07jky61",
+        "columns": null
+      },
+      "id": "Field_0bsk8gs",
+      "key": "zipCode"
+    },
+    {
+      "label": "Country",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1dh50w0",
+        "columns": null
+      },
+      "id": "Field_13l42sy",
+      "key": "country"
+    },
+    {
+      "label": "Email",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_081ket9",
+        "columns": null
+      },
+      "id": "Field_0fnpyz4",
+      "key": "email"
+    }
+  ],
+  "type": "default"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=&#34;Host&#39;s Name&#34;" target="host_name" />
+          <zeebe:output source="=&#34;123 Baker St&#34;" target="host_address" />
+          <zeebe:output source="=&#34;New York City&#34;" target="host_city" />
+          <zeebe:output source="=&#34;New York&#34;" target="host_state" />
+          <zeebe:output source="=&#34;11111&#34;" target="host_zipCode" />
+          <zeebe:output source="=&#34;15551234567&#34;" target="host_phoneNumber" />
+          <zeebe:output source="=&#34;test@test.com&#34;" target="host_email" />
+          <zeebe:output source="=&#34;United States&#34;" target="host_country" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1iru9qe</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1iru9qe" sourceRef="StartEvent_1" targetRef="Activity_1ws6t5r" />
+    <bpmn:exclusiveGateway id="Gateway_0mapyv9" name="Did the invitee RSVP yes?" default="Flow_1cgr6cb">
+      <bpmn:incoming>Flow_0oarbrk</bpmn:incoming>
+      <bpmn:outgoing>Flow_1th9w25</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1cgr6cb</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1th9w25" name="Yes" sourceRef="Gateway_0mapyv9" targetRef="Activity_0lfuc25">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=canAttend = "yes"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1cgr6cb" name="No" sourceRef="Gateway_0mapyv9" targetRef="Activity_17abbqd" />
+    <bpmn:sequenceFlow id="Flow_1ja6af1" sourceRef="Activity_0lfuc25" targetRef="Activity_1dec2n9" />
+    <bpmn:sequenceFlow id="Flow_18txlrg" sourceRef="Activity_1dec2n9" targetRef="Activity_1nnlp8i" />
+    <bpmn:sequenceFlow id="Flow_1fhvvpw" sourceRef="Activity_1rcdy1f" targetRef="Event_0ya4of0" />
+    <bpmn:serviceTask id="Activity_0lfuc25" name="Send WhatsApp Message to Host" zeebe:modelerTemplate="io.camunda.connectors.WhatsApp.v1" zeebe:modelerTemplateVersion="2" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 175.216 175.552&#39;%3E%3Cdefs%3E%3ClinearGradient id=&#39;b&#39; x1=&#39;85.915&#39; x2=&#39;86.535&#39; y1=&#39;32.567&#39; y2=&#39;137.092&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop offset=&#39;0&#39; stop-color=&#39;%2357d163&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%2323b33a&#39;/%3E%3C/linearGradient%3E%3Cfilter id=&#39;a&#39; width=&#39;1.115&#39; height=&#39;1.114&#39; x=&#39;-.057&#39; y=&#39;-.057&#39; color-interpolation-filters=&#39;sRGB&#39;%3E%3CfeGaussianBlur stdDeviation=&#39;3.531&#39;/%3E%3C/filter%3E%3C/defs%3E%3Cpath fill=&#39;%23b3b3b3&#39; d=&#39;m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0&#39; filter=&#39;url(%23a)&#39;/%3E%3Cpath fill=&#39;%23fff&#39; d=&#39;m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z&#39;/%3E%3Cpath fill=&#39;url(%23linearGradient1780)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z&#39;/%3E%3Cpath fill=&#39;%23fff&#39; fill-rule=&#39;evenodd&#39; d=&#39;M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="{{secrets.WhatsApp}}" target="authentication.token" />
+          <zeebe:input source="{{secrets.WhatsAppPhoneID}}" target="senderPhoneId" />
+          <zeebe:input source="=host_phoneNumber" target="recipientPhoneNumber" />
+          <zeebe:input source="plainText" target="messageType" />
+          <zeebe:input source="=name + &#34; has RSVP&#39;d yes to this year&#39;s holdiay party&#34;" target="messageBody" />
+          <zeebe:input source="bearer" target="authentication.type" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=&#34;https://graph.facebook.com/v17.0/&#34;+senderPhoneId+&#34;/messages&#34;" target="url" />
+          <zeebe:input source="={&#34;messaging_product&#34;:&#34;whatsapp&#34;,&#34;recipient_type&#34;:&#34;individual&#34;,&#34;to&#34;:recipientPhoneNumber,&#34;type&#34;:&#34;text&#34;, &#34;text&#34;:{&#34;preview_url&#34;:false, &#34;body&#34;:messageBody}}" target="body" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1th9w25</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ja6af1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_17abbqd" name="Send WhatsApp message to host" zeebe:modelerTemplate="io.camunda.connectors.WhatsApp.v1" zeebe:modelerTemplateVersion="2" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 175.216 175.552&#39;%3E%3Cdefs%3E%3ClinearGradient id=&#39;b&#39; x1=&#39;85.915&#39; x2=&#39;86.535&#39; y1=&#39;32.567&#39; y2=&#39;137.092&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop offset=&#39;0&#39; stop-color=&#39;%2357d163&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%2323b33a&#39;/%3E%3C/linearGradient%3E%3Cfilter id=&#39;a&#39; width=&#39;1.115&#39; height=&#39;1.114&#39; x=&#39;-.057&#39; y=&#39;-.057&#39; color-interpolation-filters=&#39;sRGB&#39;%3E%3CfeGaussianBlur stdDeviation=&#39;3.531&#39;/%3E%3C/filter%3E%3C/defs%3E%3Cpath fill=&#39;%23b3b3b3&#39; d=&#39;m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0&#39; filter=&#39;url(%23a)&#39;/%3E%3Cpath fill=&#39;%23fff&#39; d=&#39;m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z&#39;/%3E%3Cpath fill=&#39;url(%23linearGradient1780)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z&#39;/%3E%3Cpath fill=&#39;%23fff&#39; fill-rule=&#39;evenodd&#39; d=&#39;M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="{{secrets.WhatsApp}}" target="authentication.token" />
+          <zeebe:input source="{{secrets.WhatsAppPhoneID}}" target="senderPhoneId" />
+          <zeebe:input source="=host_phoneNumber" target="recipientPhoneNumber" />
+          <zeebe:input source="plainText" target="messageType" />
+          <zeebe:input source="=name + &#34; RSVP&#39;d no to this year&#39;s holiday party&#34;" target="messageBody" />
+          <zeebe:input source="bearer" target="authentication.type" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=&#34;https://graph.facebook.com/v17.0/&#34;+senderPhoneId+&#34;/messages&#34;" target="url" />
+          <zeebe:input source="={&#34;messaging_product&#34;:&#34;whatsapp&#34;,&#34;recipient_type&#34;:&#34;individual&#34;,&#34;to&#34;:recipientPhoneNumber,&#34;type&#34;:&#34;text&#34;, &#34;text&#34;:{&#34;preview_url&#34;:false, &#34;body&#34;:messageBody}}" target="body" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1cgr6cb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vu42ub</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1dec2n9" name="Ask ChatGPT for dish suggestions based on dietary restrictions" zeebe:modelerTemplate="io.camunda.connectors.OpenAI.v1" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjU2cHgiIGhlaWdodD0iMjYwcHgiIHZpZXdCb3g9IjAgMCAyNTYgMjYwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4KICAgIDx0aXRsZT5PcGVuQUk8L3RpdGxlPgogICAgPGc+CiAgICAgICAgPHBhdGggZD0iTTIzOS4xODM5MTQsMTA2LjIwMjc4MyBDMjQ1LjA1NDMwNCw4OC41MjQyMDk2IDI0My4wMjIyOCw2OS4xNzMzODA1IDIzMy42MDc1OTksNTMuMDk5ODg2NCBDMjE5LjQ1MTY3OCwyOC40NTg4MDIxIDE5MC45OTk3MDMsMTUuNzgzNjEyOSAxNjMuMjEzMDA3LDIxLjczOTUwNSBDMTQ3LjU1NDA3Nyw0LjMyMTQ1ODgzIDEyMy43OTQ5MDksLTMuNDIzOTg1NTQgMTAwLjg3OTAxLDEuNDE4NzM4OTggQzc3Ljk2MzExMDUsNi4yNjE0NjM0OSA1OS4zNjkwMDkzLDIyLjk1NzI1MzYgNTIuMDk1OTYyMSw0NS4yMjE0MjE5IEMzMy44NDM2NDk0LDQ4Ljk2NDQ4NjcgMTguMDkwMTcyMSw2MC4zOTI3NDkgOC44NjY3MjUxMyw3Ni41ODE4MDMzIEMtNS40NDM0OTEsMTAxLjE4Mjk2MiAtMi4xOTU0NDQzMSwxMzIuMjE1MjU1IDE2Ljg5ODY2NjIsMTUzLjMyMDA5NCBDMTEuMDA2MDg2NSwxNzAuOTkwNjU2IDEzLjAxOTcyODMsMTkwLjM0Mzk5MSAyMi40MjM4MjMxLDIwNi40MjI5OTEgQzM2LjU5NzU1NTMsMjMxLjA3MjM0NCA2NS4wNjgwMzQyLDI0My43NDY1NjYgOTIuODY5NTczOCwyMzcuNzgzMzcyIEMxMDUuMjM1NjM5LDI1MS43MDgyNDkgMTIzLjAwMTExMywyNTkuNjMwOTQyIDE0MS42MjM5NjgsMjU5LjUyNjkyIEMxNzAuMTA1MzU5LDI1OS41NTIxNjkgMTk1LjMzNzYxMSwyNDEuMTY1NzE4IDIwNC4wMzc3NzcsMjE0LjA0NTY2MSBDMjIyLjI4NzM0LDIxMC4yOTYzNTYgMjM4LjAzODQ4OSwxOTguODY5NzgzIDI0Ny4yNjcwMTQsMTgyLjY4NTI4IEMyNjEuNDA0NDUzLDE1OC4xMjc1MTUgMjU4LjE0MjQ5NCwxMjcuMjYyNzc1IDIzOS4xODM5MTQsMTA2LjIwMjc4MyBMMjM5LjE4MzkxNCwxMDYuMjAyNzgzIFogTTE0MS42MjM5NjgsMjQyLjU0MTIwNyBDMTMwLjI1NTY4MiwyNDIuNTU5MTc3IDExOS4yNDM4NzYsMjM4LjU3NDY0MiAxMTAuNTE5MzgxLDIzMS4yODYxOTcgTDExMi4wNTQxNDYsMjMwLjQxNjQ5NiBMMTYzLjcyNDU5NSwyMDAuNTkwODgxIEMxNjYuMzQwNjQ4LDE5OS4wNTY0NDQgMTY3Ljk1NDMyMSwxOTYuMjU2ODE4IDE2Ny45NzA3ODEsMTkzLjIyNDAwNSBMMTY3Ljk3MDc4MSwxMjAuMzczNzg4IEwxODkuODE1NjE0LDEzMy4wMTAwMjYgQzE5MC4wMzQxMzIsMTMzLjEyMTQyMyAxOTAuMTg2MjM1LDEzMy4zMzA1NjQgMTkwLjIyNDg4NSwxMzMuNTcyNzc0IEwxOTAuMjI0ODg1LDE5My45NDAyMjkgQzE5MC4xNjg2MDMsMjIwLjc1ODQyNyAxNjguNDQyMTY2LDI0Mi40ODQ4NjQgMTQxLjYyMzk2OCwyNDIuNTQxMjA3IFogTTM3LjE1NzU3NDksMTk3LjkzMDYyIEMzMS40NTY0OTgsMTg4LjA4NjM1OSAyOS40MDk0ODE4LDE3Ni41NDY5ODQgMzEuMzc2NjIzNywxNjUuMzQyNDI2IEwzMi45MTEzODk1LDE2Ni4yNjMyODUgTDg0LjYzMjk5NzMsMTk2LjA4ODkwMSBDODcuMjM4OTM0OSwxOTcuNjE4MjA3IDkwLjQ2ODI3MTcsMTk3LjYxODIwNyA5My4wNzQyMDkzLDE5Ni4wODg5MDEgTDE1Ni4yNTU0MDIsMTU5LjY2Mzc5MyBMMTU2LjI1NTQwMiwxODQuODg1MTExIEMxNTYuMjQzNTU3LDE4NS4xNDk3NzEgMTU2LjExMTcyNSwxODUuMzk0NjAyIDE1NS44OTcyOSwxODUuNTUwMTc2IEwxMDMuNTYxNzc2LDIxNS43MzM5MDMgQzgwLjMwNTQ5NTMsMjI5LjEzMTYzMiA1MC41OTI0OTU0LDIyMS4xNjU0MzUgMzcuMTU3NTc0OSwxOTcuOTMwNjIgWiBNMjMuNTQ5MzE4MSw4NS4zODExMjczIEMyOS4yODk5ODYxLDc1LjQ3MzMwOTcgMzguMzUxMTkxMSw2Ny45MTYyNjQ4IDQ5LjEyODc0ODIsNjQuMDQ3ODgyNSBMNDkuMTI4NzQ4MiwxMjUuNDM4NTE1IEM0OS4wODkxNDkyLDEyOC40NTk0MjUgNTAuNjk2NTM4NiwxMzEuMjYyNTU2IDUzLjMyMzc3NDgsMTMyLjc1NDIzMiBMMTE2LjE5ODAxNCwxNjkuMDI1ODY0IEw5NC4zNTMxODA4LDE4MS42NjIxMDIgQzk0LjExMzIzMjUsMTgxLjc4OTQzNCA5My44MjU3NDYxLDE4MS43ODk0MzQgOTMuNTg1Nzk3OSwxODEuNjYyMTAyIEw0MS4zNTI2MDE1LDE1MS41Mjk1MzQgQzE4LjE0MTk0MjYsMTM4LjA3NjA5OCAxMC4xODE3NjgxLDEwOC4zODU1NjIgMjMuNTQ5MzE4MSw4NS4xMjUzMzMgTDIzLjU0OTMxODEsODUuMzgxMTI3MyBaIE0yMDMuMDE0NiwxMjcuMDc1NTk4IEwxMzkuOTM1NzI1LDkwLjQ0NTg1NDUgTDE2MS43Mjk0LDc3Ljg2MDc3NDggQzE2MS45NjkzNDgsNzcuNzMzNDQzNCAxNjIuMjU2ODM0LDc3LjczMzQ0MzQgMTYyLjQ5Njc4Myw3Ny44NjA3NzQ4IEwyMTQuNzI5OTc5LDEwOC4wNDQ1MDIgQzIzMS4wMzIzMjksMTE3LjQ1MTc0NyAyNDAuNDM3Mjk0LDEzNS40MjYxMDkgMjM4Ljg3MTUwNCwxNTQuMTgyNzM5IEMyMzcuMzA1NzE0LDE3Mi45MzkzNjggMjI1LjA1MDcxOSwxODkuMTA1NTcyIDIwNy40MTQyNjIsMTk1LjY3OTYzIEwyMDcuNDE0MjYyLDEzNC4yODg5OTggQzIwNy4zMjI1MjEsMTMxLjI3Njg2NyAyMDUuNjUwNjk3LDEyOC41MzU4NTMgMjAzLjAxNDYsMTI3LjA3NTU5OCBaIE0yMjQuNzU3MTE2LDk0LjM4NTA4NjcgTDIyMy4yMjIzNSw5My40NjQyMjcyIEwxNzEuNjAzMDYsNjMuMzgyODE3MyBDMTY4Ljk4MTI5Myw2MS44NDQzNzUxIDE2NS43MzI0NTYsNjEuODQ0Mzc1MSAxNjMuMTEwNjg5LDYzLjM4MjgxNzMgTDk5Ljk4MDY1NTQsOTkuODA3OTI1OSBMOTkuOTgwNjU1NCw3NC41ODY2MDc3IEM5OS45NTMzMDA0LDc0LjMyNTQwODggMTAwLjA3MTA5NSw3NC4wNzAxODY5IDEwMC4yODc2MDksNzMuOTIxNTQyNiBMMTUyLjUyMDgwNSw0My43ODg5NzM4IEMxNjguODYzMDk4LDM0LjM3NDM1MTggMTg5LjE3NDI1NiwzNS4yNTI5MDQzIDIwNC42NDI1NzksNDYuMDQzNDg0MSBDMjIwLjExMDkwMyw1Ni44MzQwNjM4IDIyNy45NDkyNjksNzUuNTkyMzk1OSAyMjQuNzU3MTE2LDk0LjE4MDQ1MTMgTDIyNC43NTcxMTYsOTQuMzg1MDg2NyBaIE04OC4wNjA2NDA5LDEzOS4wOTc5MzEgTDY2LjIxNTgwNzYsMTI2LjUxMjg1MSBDNjUuOTk1MDM5OSwxMjYuMzc5MDkxIDY1Ljg0NTA5NjUsMTI2LjE1NDE3NiA2NS44MDY1MzY3LDEyNS44OTg5NDUgTDY1LjgwNjUzNjcsNjUuNjg0OTY2IEM2NS44MzE0NDk1LDQ2LjgyODUzNjcgNzYuNzUwMDYwNSwyOS42ODQ2MDMyIDkzLjgyNzA4NTIsMjEuNjg4MzA1NSBDMTEwLjkwNDExLDEzLjY5MjAwNzkgMTMxLjA2MzgzMywxNi4yODM1NDYyIDE0NS41NjMyLDI4LjMzODk5OCBMMTQ0LjAyODQzNCwyOS4yMDg2OTg2IEw5Mi4zNTc5ODUyLDU5LjAzNDMxNDIgQzg5Ljc0MTkzMjcsNjAuNTY4NzUxMyA4OC4xMjgyNTk3LDYzLjM2ODM3NjcgODguMTExNzk5OCw2Ni40MDExOTAxIEw4OC4wNjA2NDA5LDEzOS4wOTc5MzEgWiBNOTkuOTI5NDk2NSwxMTMuNTE4NSBMMTI4LjA2Njg3LDk3LjMwMTE0MTcgTDE1Ni4yNTU0MDIsMTEzLjUxODUgTDE1Ni4yNTU0MDIsMTQ1Ljk1MzIxOCBMMTI4LjE2OTE4NywxNjIuMTcwNTc3IEw5OS45ODA2NTU0LDE0NS45NTMyMTggTDk5LjkyOTQ5NjUsMTEzLjUxODUgWiIgZmlsbD0iIzAwMDAwMCI+PC9wYXRoPgogICAgPC9nPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="bearer" target="authentication.type" />
+          <zeebe:input source="{{secrets.OpenAI}}" target="authentication.token" />
+          <zeebe:input source="=if is defined(internal_organization) and internal_organization != null then {&#34;Content-Type&#34;:&#34;application/json&#34;, &#34;OpenAI-Organization&#34;:internal_organization} else {&#34;Content-Type&#34;:&#34;application/json&#34;}" target="headers" />
+          <zeebe:input source="chat" target="operation" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="https://api.openai.com/v1/chat/completions" target="url" />
+          <zeebe:input source="gpt-3.5-turbo" target="internal_model" />
+          <zeebe:input source="=&#34;Generate a holiday dish taking these dietary restrictions in mind: &#34; + dietaryRestrictions + &#34;. Only produce the recipe, nothing else&#34;" target="internal_prompt" />
+          <zeebe:input source="1" target="internal_choices" />
+          <zeebe:input source="=append(concatenate(if is defined(internal_systemMessage) then [{&#34;role&#34;: &#34;system&#34;, &#34;content&#34;: internal_systemMessage}] else [], if is defined(internal_chatHistory) then internal_chatHistory else []), {&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: internal_prompt})" target="internal_messages" />
+          <zeebe:input source="={&#34;model&#34;: internal_model, &#34;messages&#34;: internal_messages, &#34;n&#34;: number(internal_choices)}" target="body" />
+          <zeebe:input source="30" target="connectionTimeoutInSeconds" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={recipe: response.body.choices[1].message.content}" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ja6af1</bpmn:incoming>
+      <bpmn:outgoing>Flow_18txlrg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1nnlp8i" name="Send Invitee a confirmation message and suggested recipe" zeebe:modelerTemplate="io.camunda.connectors.WhatsApp.v1" zeebe:modelerTemplateVersion="2" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 175.216 175.552&#39;%3E%3Cdefs%3E%3ClinearGradient id=&#39;b&#39; x1=&#39;85.915&#39; x2=&#39;86.535&#39; y1=&#39;32.567&#39; y2=&#39;137.092&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop offset=&#39;0&#39; stop-color=&#39;%2357d163&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%2323b33a&#39;/%3E%3C/linearGradient%3E%3Cfilter id=&#39;a&#39; width=&#39;1.115&#39; height=&#39;1.114&#39; x=&#39;-.057&#39; y=&#39;-.057&#39; color-interpolation-filters=&#39;sRGB&#39;%3E%3CfeGaussianBlur stdDeviation=&#39;3.531&#39;/%3E%3C/filter%3E%3C/defs%3E%3Cpath fill=&#39;%23b3b3b3&#39; d=&#39;m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0&#39; filter=&#39;url(%23a)&#39;/%3E%3Cpath fill=&#39;%23fff&#39; d=&#39;m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z&#39;/%3E%3Cpath fill=&#39;url(%23linearGradient1780)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z&#39;/%3E%3Cpath fill=&#39;%23fff&#39; fill-rule=&#39;evenodd&#39; d=&#39;M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="{{secrets.WhatsApp}}" target="authentication.token" />
+          <zeebe:input source="{{secrets.WhatsAppPhoneID}}" target="senderPhoneId" />
+          <zeebe:input source="=phoneNumber" target="recipientPhoneNumber" />
+          <zeebe:input source="plainText" target="messageType" />
+          <zeebe:input source="=&#34;We are so excited to have you for this year&#39;s holiday party! Based off your dietary restrictions, here is a recipe suggestion to bring: &#34; + recipe" target="messageBody" />
+          <zeebe:input source="bearer" target="authentication.type" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=&#34;https://graph.facebook.com/v17.0/&#34;+senderPhoneId+&#34;/messages&#34;" target="url" />
+          <zeebe:input source="={&#34;messaging_product&#34;:&#34;whatsapp&#34;,&#34;recipient_type&#34;:&#34;individual&#34;,&#34;to&#34;:recipientPhoneNumber,&#34;type&#34;:&#34;text&#34;, &#34;text&#34;:{&#34;preview_url&#34;:false, &#34;body&#34;:messageBody}}" target="body" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_18txlrg</bpmn:incoming>
+      <bpmn:outgoing>Flow_00b6xxh</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0ya4of0" name="Party starts">
+      <bpmn:incoming>Flow_1fhvvpw</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_1rcdy1f" name="Send a reminder message to invitee" zeebe:modelerTemplate="io.camunda.connectors.WhatsApp.v1" zeebe:modelerTemplateVersion="2" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 175.216 175.552&#39;%3E%3Cdefs%3E%3ClinearGradient id=&#39;b&#39; x1=&#39;85.915&#39; x2=&#39;86.535&#39; y1=&#39;32.567&#39; y2=&#39;137.092&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop offset=&#39;0&#39; stop-color=&#39;%2357d163&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%2323b33a&#39;/%3E%3C/linearGradient%3E%3Cfilter id=&#39;a&#39; width=&#39;1.115&#39; height=&#39;1.114&#39; x=&#39;-.057&#39; y=&#39;-.057&#39; color-interpolation-filters=&#39;sRGB&#39;%3E%3CfeGaussianBlur stdDeviation=&#39;3.531&#39;/%3E%3C/filter%3E%3C/defs%3E%3Cpath fill=&#39;%23b3b3b3&#39; d=&#39;m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0&#39; filter=&#39;url(%23a)&#39;/%3E%3Cpath fill=&#39;%23fff&#39; d=&#39;m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z&#39;/%3E%3Cpath fill=&#39;url(%23linearGradient1780)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z&#39;/%3E%3Cpath fill=&#39;%23fff&#39; fill-rule=&#39;evenodd&#39; d=&#39;M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="{{secrets.WhatsApp}}" target="authentication.token" />
+          <zeebe:input source="{{secrets.WhatsAppPhoneID}}" target="senderPhoneId" />
+          <zeebe:input source="=phoneNumber" target="recipientPhoneNumber" />
+          <zeebe:input source="plainText" target="messageType" />
+          <zeebe:input source="Here is your reminder for the holiday party! We cannot wait to have you!" target="messageBody" />
+          <zeebe:input source="bearer" target="authentication.type" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=&#34;https://graph.facebook.com/v17.0/&#34;+senderPhoneId+&#34;/messages&#34;" target="url" />
+          <zeebe:input source="={&#34;messaging_product&#34;:&#34;whatsapp&#34;,&#34;recipient_type&#34;:&#34;individual&#34;,&#34;to&#34;:recipientPhoneNumber,&#34;type&#34;:&#34;text&#34;, &#34;text&#34;:{&#34;preview_url&#34;:false, &#34;body&#34;:messageBody}}" target="body" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0nl0ip8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fhvvpw</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_1ws6t5r" name="RSVP for holiday event">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_0ifd2ee" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1iru9qe</bpmn:incoming>
+      <bpmn:outgoing>Flow_16yv27j</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_00b6xxh" sourceRef="Activity_1nnlp8i" targetRef="Event_1hglxcs" />
+    <bpmn:sequenceFlow id="Flow_16yv27j" sourceRef="Activity_1ws6t5r" targetRef="Activity_054ked3" />
+    <bpmn:serviceTask id="Activity_054ked3" name="Create host address" zeebe:modelerTemplate="io.camunda.connectors.EasyPost.v1" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; version=&#39;1.1&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 1000 1000&#39; xml:space=&#39;preserve&#39;%3E%3Cdesc%3ECreated with Fabric.js 3.5.0%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Crect x=&#39;0&#39; y=&#39;0&#39; width=&#39;18&#39; height=&#39;100%25&#39; fill=&#39;%23ffffff&#39;/%3E%3Cg transform=&#39;matrix(0.2007 0 0 -0.1895 500.0727 500.0583)&#39; id=&#39;344493&#39;%3E%3Cpath style=&#39;stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(17,90,241); fill-rule: nonzero; opacity: 1;&#39; vector-effect=&#39;non-scaling-stroke&#39; transform=&#39; translate(-2549.75, -2559.5281)&#39; d=&#39;M 2475 5110 c -22 -5 -59 -17 -81 -27 c -23 -10 -470 -265 -994 -568 c -682 -394 -966 -563 -999 -595 c -54 -52 -96 -131 -111 -209 c -14 -73 -14 -2229 0 -2302 c 14 -76 54 -152 108 -207 c 37 -37 257 -168 1023 -610 c 901 -519 982 -564 1050 -578 c 74 -15 130 -13 199 8 c 19 6 474 263 1010 572 c 1044 601 1047 603 1096 710 c 37 80 45 146 42 338 l -3 176 l -980 -565 c -539 -310 -1007 -578 -1040 -595 c -70 -36 -160 -47 -221 -28 c -21 7 -265 145 -541 308 l -503 296 l 0 229 l 0 229 l 33 -20 c 17 -11 244 -142 503 -291 c 517 -298 534 -306 639 -284 c 45 10 262 132 1085 610 l 1029 598 l 1 258 l 0 258 l -22 -12 c -13 -7 -473 -271 -1023 -587 c -550 -317 -1020 -582 -1045 -589 c -60 -19 -145 -11 -202 18 c -25 13 -260 150 -522 304 l -475 280 l -1 228 l 0 228 l 23 -12 c 12 -7 229 -131 482 -277 c 253 -146 480 -274 505 -285 c 52 -23 146 -28 200 -9 c 19 7 494 279 1055 605 l 1020 594 l 3 183 c 2 140 -1 197 -13 244 c -19 74 -68 158 -117 200 c -50 44 -1962 1146 -2015 1162 c -59 18 -150 24 -198 14 z&#39; stroke-linecap=&#39;round&#39;/%3E%3C/g%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="createAddress" target="operationType" />
+          <zeebe:input source="basic" target="authentication.type" />
+          <zeebe:input source="{{secrets.EasyPost}}" target="authentication.username" />
+          <zeebe:input source="SPEC_PASSWORD_EMPTY_PATTERN" target="authentication.password" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=host_name" target="body.address.name" />
+          <zeebe:input source="=host_phoneNumber" target="body.address.phone" />
+          <zeebe:input source="=host_address" target="body.address.street1" />
+          <zeebe:input source="=host_city" target="body.address.city" />
+          <zeebe:input source="=host_state" target="body.address.state" />
+          <zeebe:input source="=host_email" target="body.address.email" />
+          <zeebe:input source="=host_zipCode" target="body.address.zip" />
+          <zeebe:input source="=host_country" target="body.address.country" />
+          <zeebe:input source="https://api.easypost.com/v2/addresses" target="url" />
+          <zeebe:input source="20" target="connectionTimeoutInSeconds" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={host_addressId:response.body.id}" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_16yv27j</bpmn:incoming>
+      <bpmn:outgoing>Flow_15x02g7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_15hx7k4" name="Create address for invitee" zeebe:modelerTemplate="io.camunda.connectors.EasyPost.v1" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; version=&#39;1.1&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 1000 1000&#39; xml:space=&#39;preserve&#39;%3E%3Cdesc%3ECreated with Fabric.js 3.5.0%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Crect x=&#39;0&#39; y=&#39;0&#39; width=&#39;18&#39; height=&#39;100%25&#39; fill=&#39;%23ffffff&#39;/%3E%3Cg transform=&#39;matrix(0.2007 0 0 -0.1895 500.0727 500.0583)&#39; id=&#39;344493&#39;%3E%3Cpath style=&#39;stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(17,90,241); fill-rule: nonzero; opacity: 1;&#39; vector-effect=&#39;non-scaling-stroke&#39; transform=&#39; translate(-2549.75, -2559.5281)&#39; d=&#39;M 2475 5110 c -22 -5 -59 -17 -81 -27 c -23 -10 -470 -265 -994 -568 c -682 -394 -966 -563 -999 -595 c -54 -52 -96 -131 -111 -209 c -14 -73 -14 -2229 0 -2302 c 14 -76 54 -152 108 -207 c 37 -37 257 -168 1023 -610 c 901 -519 982 -564 1050 -578 c 74 -15 130 -13 199 8 c 19 6 474 263 1010 572 c 1044 601 1047 603 1096 710 c 37 80 45 146 42 338 l -3 176 l -980 -565 c -539 -310 -1007 -578 -1040 -595 c -70 -36 -160 -47 -221 -28 c -21 7 -265 145 -541 308 l -503 296 l 0 229 l 0 229 l 33 -20 c 17 -11 244 -142 503 -291 c 517 -298 534 -306 639 -284 c 45 10 262 132 1085 610 l 1029 598 l 1 258 l 0 258 l -22 -12 c -13 -7 -473 -271 -1023 -587 c -550 -317 -1020 -582 -1045 -589 c -60 -19 -145 -11 -202 18 c -25 13 -260 150 -522 304 l -475 280 l -1 228 l 0 228 l 23 -12 c 12 -7 229 -131 482 -277 c 253 -146 480 -274 505 -285 c 52 -23 146 -28 200 -9 c 19 7 494 279 1055 605 l 1020 594 l 3 183 c 2 140 -1 197 -13 244 c -19 74 -68 158 -117 200 c -50 44 -1962 1146 -2015 1162 c -59 18 -150 24 -198 14 z&#39; stroke-linecap=&#39;round&#39;/%3E%3C/g%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="createAddress" target="operationType" />
+          <zeebe:input source="basic" target="authentication.type" />
+          <zeebe:input source="{{secrets.EasyPost}}" target="authentication.username" />
+          <zeebe:input source="SPEC_PASSWORD_EMPTY_PATTERN" target="authentication.password" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=name" target="body.address.name" />
+          <zeebe:input source="=phoneNumber" target="body.address.phone" />
+          <zeebe:input source="=address" target="body.address.street1" />
+          <zeebe:input source="=city" target="body.address.city" />
+          <zeebe:input source="=state" target="body.address.state" />
+          <zeebe:input source="=email" target="body.address.email" />
+          <zeebe:input source="=zipCode" target="body.address.zip" />
+          <zeebe:input source="=country" target="body.address.country" />
+          <zeebe:input source="https://api.easypost.com/v2/addresses" target="url" />
+          <zeebe:input source="20" target="connectionTimeoutInSeconds" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={invitee_addressId:response.body.id}" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_15x02g7</bpmn:incoming>
+      <bpmn:outgoing>Flow_15rhmp6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_15x02g7" sourceRef="Activity_054ked3" targetRef="Activity_15hx7k4" />
+    <bpmn:intermediateCatchEvent id="Event_1hglxcs" name="Wait until a few days before the party">
+      <bpmn:incoming>Flow_00b6xxh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nl0ip8</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1x3xtzf">
+        <bpmn:timeDate xsi:type="bpmn:tFormalExpression">=date and time("2023-12-18T12:00:00-07:00")</bpmn:timeDate>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_0nl0ip8" sourceRef="Event_1hglxcs" targetRef="Activity_1rcdy1f" />
+    <bpmn:serviceTask id="Activity_0a1n3z5" name="Create package to ship to invitee" zeebe:modelerTemplate="io.camunda.connectors.EasyPost.v1" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; version=&#39;1.1&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 1000 1000&#39; xml:space=&#39;preserve&#39;%3E%3Cdesc%3ECreated with Fabric.js 3.5.0%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Crect x=&#39;0&#39; y=&#39;0&#39; width=&#39;18&#39; height=&#39;100%25&#39; fill=&#39;%23ffffff&#39;/%3E%3Cg transform=&#39;matrix(0.2007 0 0 -0.1895 500.0727 500.0583)&#39; id=&#39;344493&#39;%3E%3Cpath style=&#39;stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(17,90,241); fill-rule: nonzero; opacity: 1;&#39; vector-effect=&#39;non-scaling-stroke&#39; transform=&#39; translate(-2549.75, -2559.5281)&#39; d=&#39;M 2475 5110 c -22 -5 -59 -17 -81 -27 c -23 -10 -470 -265 -994 -568 c -682 -394 -966 -563 -999 -595 c -54 -52 -96 -131 -111 -209 c -14 -73 -14 -2229 0 -2302 c 14 -76 54 -152 108 -207 c 37 -37 257 -168 1023 -610 c 901 -519 982 -564 1050 -578 c 74 -15 130 -13 199 8 c 19 6 474 263 1010 572 c 1044 601 1047 603 1096 710 c 37 80 45 146 42 338 l -3 176 l -980 -565 c -539 -310 -1007 -578 -1040 -595 c -70 -36 -160 -47 -221 -28 c -21 7 -265 145 -541 308 l -503 296 l 0 229 l 0 229 l 33 -20 c 17 -11 244 -142 503 -291 c 517 -298 534 -306 639 -284 c 45 10 262 132 1085 610 l 1029 598 l 1 258 l 0 258 l -22 -12 c -13 -7 -473 -271 -1023 -587 c -550 -317 -1020 -582 -1045 -589 c -60 -19 -145 -11 -202 18 c -25 13 -260 150 -522 304 l -475 280 l -1 228 l 0 228 l 23 -12 c 12 -7 229 -131 482 -277 c 253 -146 480 -274 505 -285 c 52 -23 146 -28 200 -9 c 19 7 494 279 1055 605 l 1020 594 l 3 183 c 2 140 -1 197 -13 244 c -19 74 -68 158 -117 200 c -50 44 -1962 1146 -2015 1162 c -59 18 -150 24 -198 14 z&#39; stroke-linecap=&#39;round&#39;/%3E%3C/g%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="createParcel" target="operationType" />
+          <zeebe:input source="basic" target="authentication.type" />
+          <zeebe:input source="{{secrets.EasyPost}}" target="authentication.username" />
+          <zeebe:input source="SPEC_PASSWORD_EMPTY_PATTERN" target="authentication.password" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="30" target="body.parcel.weight" />
+          <zeebe:input source="20" target="body.parcel.length" />
+          <zeebe:input source="20" target="body.parcel.width" />
+          <zeebe:input source="6" target="body.parcel.height" />
+          <zeebe:input source="https://api.easypost.com/v2/parcels" target="url" />
+          <zeebe:input source="20" target="connectionTimeoutInSeconds" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={parcelId:response.body.id}" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_15rhmp6</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ah47e7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1y6xe1e" name="Create a shipment" zeebe:modelerTemplate="io.camunda.connectors.EasyPost.v1" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; version=&#39;1.1&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 1000 1000&#39; xml:space=&#39;preserve&#39;%3E%3Cdesc%3ECreated with Fabric.js 3.5.0%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Crect x=&#39;0&#39; y=&#39;0&#39; width=&#39;18&#39; height=&#39;100%25&#39; fill=&#39;%23ffffff&#39;/%3E%3Cg transform=&#39;matrix(0.2007 0 0 -0.1895 500.0727 500.0583)&#39; id=&#39;344493&#39;%3E%3Cpath style=&#39;stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(17,90,241); fill-rule: nonzero; opacity: 1;&#39; vector-effect=&#39;non-scaling-stroke&#39; transform=&#39; translate(-2549.75, -2559.5281)&#39; d=&#39;M 2475 5110 c -22 -5 -59 -17 -81 -27 c -23 -10 -470 -265 -994 -568 c -682 -394 -966 -563 -999 -595 c -54 -52 -96 -131 -111 -209 c -14 -73 -14 -2229 0 -2302 c 14 -76 54 -152 108 -207 c 37 -37 257 -168 1023 -610 c 901 -519 982 -564 1050 -578 c 74 -15 130 -13 199 8 c 19 6 474 263 1010 572 c 1044 601 1047 603 1096 710 c 37 80 45 146 42 338 l -3 176 l -980 -565 c -539 -310 -1007 -578 -1040 -595 c -70 -36 -160 -47 -221 -28 c -21 7 -265 145 -541 308 l -503 296 l 0 229 l 0 229 l 33 -20 c 17 -11 244 -142 503 -291 c 517 -298 534 -306 639 -284 c 45 10 262 132 1085 610 l 1029 598 l 1 258 l 0 258 l -22 -12 c -13 -7 -473 -271 -1023 -587 c -550 -317 -1020 -582 -1045 -589 c -60 -19 -145 -11 -202 18 c -25 13 -260 150 -522 304 l -475 280 l -1 228 l 0 228 l 23 -12 c 12 -7 229 -131 482 -277 c 253 -146 480 -274 505 -285 c 52 -23 146 -28 200 -9 c 19 7 494 279 1055 605 l 1020 594 l 3 183 c 2 140 -1 197 -13 244 c -19 74 -68 158 -117 200 c -50 44 -1962 1146 -2015 1162 c -59 18 -150 24 -198 14 z&#39; stroke-linecap=&#39;round&#39;/%3E%3C/g%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="createShipment" target="operationType" />
+          <zeebe:input source="basic" target="authentication.type" />
+          <zeebe:input source="{{secrets.EasyPost}}" target="authentication.username" />
+          <zeebe:input source="SPEC_PASSWORD_EMPTY_PATTERN" target="authentication.password" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=invitee_addressId" target="body.shipment.to_address.id" />
+          <zeebe:input source="=host_addressId" target="body.shipment.from_address.id" />
+          <zeebe:input source="=parcelId" target="body.shipment.parcel.id" />
+          <zeebe:input source="https://api.easypost.com/v2/shipments" target="url" />
+          <zeebe:input source="20" target="connectionTimeoutInSeconds" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={priorityRate: response.body.rates[item.service = &#34;Priority&#34;], shipmentId: priorityRate[1].shipment_id, rateId: priorityRate[1].id}" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ah47e7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kr0gyv</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1qs84kr" name="Buy a shipment" zeebe:modelerTemplate="io.camunda.connectors.EasyPost.v1" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; version=&#39;1.1&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 1000 1000&#39; xml:space=&#39;preserve&#39;%3E%3Cdesc%3ECreated with Fabric.js 3.5.0%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Crect x=&#39;0&#39; y=&#39;0&#39; width=&#39;18&#39; height=&#39;100%25&#39; fill=&#39;%23ffffff&#39;/%3E%3Cg transform=&#39;matrix(0.2007 0 0 -0.1895 500.0727 500.0583)&#39; id=&#39;344493&#39;%3E%3Cpath style=&#39;stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(17,90,241); fill-rule: nonzero; opacity: 1;&#39; vector-effect=&#39;non-scaling-stroke&#39; transform=&#39; translate(-2549.75, -2559.5281)&#39; d=&#39;M 2475 5110 c -22 -5 -59 -17 -81 -27 c -23 -10 -470 -265 -994 -568 c -682 -394 -966 -563 -999 -595 c -54 -52 -96 -131 -111 -209 c -14 -73 -14 -2229 0 -2302 c 14 -76 54 -152 108 -207 c 37 -37 257 -168 1023 -610 c 901 -519 982 -564 1050 -578 c 74 -15 130 -13 199 8 c 19 6 474 263 1010 572 c 1044 601 1047 603 1096 710 c 37 80 45 146 42 338 l -3 176 l -980 -565 c -539 -310 -1007 -578 -1040 -595 c -70 -36 -160 -47 -221 -28 c -21 7 -265 145 -541 308 l -503 296 l 0 229 l 0 229 l 33 -20 c 17 -11 244 -142 503 -291 c 517 -298 534 -306 639 -284 c 45 10 262 132 1085 610 l 1029 598 l 1 258 l 0 258 l -22 -12 c -13 -7 -473 -271 -1023 -587 c -550 -317 -1020 -582 -1045 -589 c -60 -19 -145 -11 -202 18 c -25 13 -260 150 -522 304 l -475 280 l -1 228 l 0 228 l 23 -12 c 12 -7 229 -131 482 -277 c 253 -146 480 -274 505 -285 c 52 -23 146 -28 200 -9 c 19 7 494 279 1055 605 l 1020 594 l 3 183 c 2 140 -1 197 -13 244 c -19 74 -68 158 -117 200 c -50 44 -1962 1146 -2015 1162 c -59 18 -150 24 -198 14 z&#39; stroke-linecap=&#39;round&#39;/%3E%3C/g%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="buyShipment" target="operationType" />
+          <zeebe:input source="basic" target="authentication.type" />
+          <zeebe:input source="{{secrets.EasyPost}}" target="authentication.username" />
+          <zeebe:input source="SPEC_PASSWORD_EMPTY_PATTERN" target="authentication.password" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=shipmentId" target="shipmentIdValue" />
+          <zeebe:input source="=rateId" target="body.rate.id" />
+          <zeebe:input source="=&#34;https://api.easypost.com/v2/shipments/&#34;+shipmentIdValue+&#34;/buy&#34;" target="url" />
+          <zeebe:input source="20" target="connectionTimeoutInSeconds" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={trackerId: response.body.tracker.id, trackingCode: response.body.tracking_code, shipmentstatus:response.body.status}" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kr0gyv</bpmn:incoming>
+      <bpmn:outgoing>Flow_06ede57</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1ebyoqv" name="Receive Tracker status to send to host" zeebe:modelerTemplate="io.camunda.connectors.EasyPost.v1" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; version=&#39;1.1&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 1000 1000&#39; xml:space=&#39;preserve&#39;%3E%3Cdesc%3ECreated with Fabric.js 3.5.0%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Crect x=&#39;0&#39; y=&#39;0&#39; width=&#39;18&#39; height=&#39;100%25&#39; fill=&#39;%23ffffff&#39;/%3E%3Cg transform=&#39;matrix(0.2007 0 0 -0.1895 500.0727 500.0583)&#39; id=&#39;344493&#39;%3E%3Cpath style=&#39;stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(17,90,241); fill-rule: nonzero; opacity: 1;&#39; vector-effect=&#39;non-scaling-stroke&#39; transform=&#39; translate(-2549.75, -2559.5281)&#39; d=&#39;M 2475 5110 c -22 -5 -59 -17 -81 -27 c -23 -10 -470 -265 -994 -568 c -682 -394 -966 -563 -999 -595 c -54 -52 -96 -131 -111 -209 c -14 -73 -14 -2229 0 -2302 c 14 -76 54 -152 108 -207 c 37 -37 257 -168 1023 -610 c 901 -519 982 -564 1050 -578 c 74 -15 130 -13 199 8 c 19 6 474 263 1010 572 c 1044 601 1047 603 1096 710 c 37 80 45 146 42 338 l -3 176 l -980 -565 c -539 -310 -1007 -578 -1040 -595 c -70 -36 -160 -47 -221 -28 c -21 7 -265 145 -541 308 l -503 296 l 0 229 l 0 229 l 33 -20 c 17 -11 244 -142 503 -291 c 517 -298 534 -306 639 -284 c 45 10 262 132 1085 610 l 1029 598 l 1 258 l 0 258 l -22 -12 c -13 -7 -473 -271 -1023 -587 c -550 -317 -1020 -582 -1045 -589 c -60 -19 -145 -11 -202 18 c -25 13 -260 150 -522 304 l -475 280 l -1 228 l 0 228 l 23 -12 c 12 -7 229 -131 482 -277 c 253 -146 480 -274 505 -285 c 52 -23 146 -28 200 -9 c 19 7 494 279 1055 605 l 1020 594 l 3 183 c 2 140 -1 197 -13 244 c -19 74 -68 158 -117 200 c -50 44 -1962 1146 -2015 1162 c -59 18 -150 24 -198 14 z&#39; stroke-linecap=&#39;round&#39;/%3E%3C/g%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="retrieveTracker" target="operationType" />
+          <zeebe:input source="basic" target="authentication.type" />
+          <zeebe:input source="{{secrets.EasyPost}}" target="authentication.username" />
+          <zeebe:input source="SPEC_PASSWORD_EMPTY_PATTERN" target="authentication.password" />
+          <zeebe:input source="get" target="method" />
+          <zeebe:input source="=trackerId" target="trackerIdValue" />
+          <zeebe:input source="=&#34;https://api.easypost.com/v2/trackers/&#34;+trackerIdValue" target="url" />
+          <zeebe:input source="20" target="connectionTimeoutInSeconds" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={trackerStatus: response.body.status}" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06ede57</bpmn:incoming>
+      <bpmn:outgoing>Flow_1krxy0c</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0fsgphx" name="Send package status to host" zeebe:modelerTemplate="io.camunda.connectors.WhatsApp.v1" zeebe:modelerTemplateVersion="2" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 175.216 175.552&#39;%3E%3Cdefs%3E%3ClinearGradient id=&#39;b&#39; x1=&#39;85.915&#39; x2=&#39;86.535&#39; y1=&#39;32.567&#39; y2=&#39;137.092&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop offset=&#39;0&#39; stop-color=&#39;%2357d163&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%2323b33a&#39;/%3E%3C/linearGradient%3E%3Cfilter id=&#39;a&#39; width=&#39;1.115&#39; height=&#39;1.114&#39; x=&#39;-.057&#39; y=&#39;-.057&#39; color-interpolation-filters=&#39;sRGB&#39;%3E%3CfeGaussianBlur stdDeviation=&#39;3.531&#39;/%3E%3C/filter%3E%3C/defs%3E%3Cpath fill=&#39;%23b3b3b3&#39; d=&#39;m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0&#39; filter=&#39;url(%23a)&#39;/%3E%3Cpath fill=&#39;%23fff&#39; d=&#39;m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z&#39;/%3E%3Cpath fill=&#39;url(%23linearGradient1780)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z&#39;/%3E%3Cpath fill=&#39;%23fff&#39; fill-rule=&#39;evenodd&#39; d=&#39;M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="{{secrets.WhatsApp}}" target="authentication.token" />
+          <zeebe:input source="{{secrets.WhatsAppPhoneID}}" target="senderPhoneId" />
+          <zeebe:input source="=host_phoneNumber" target="recipientPhoneNumber" />
+          <zeebe:input source="plainText" target="messageType" />
+          <zeebe:input source="=&#34;Tracker status for&#34; + name + &#34;&#39;s package: &#34; + trackerStatus" target="messageBody" />
+          <zeebe:input source="bearer" target="authentication.type" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=&#34;https://graph.facebook.com/v17.0/&#34;+senderPhoneId+&#34;/messages&#34;" target="url" />
+          <zeebe:input source="={&#34;messaging_product&#34;:&#34;whatsapp&#34;,&#34;recipient_type&#34;:&#34;individual&#34;,&#34;to&#34;:recipientPhoneNumber,&#34;type&#34;:&#34;text&#34;, &#34;text&#34;:{&#34;preview_url&#34;:false, &#34;body&#34;:messageBody}}" target="body" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1krxy0c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0oarbrk</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0ah47e7" sourceRef="Activity_0a1n3z5" targetRef="Activity_1y6xe1e" />
+    <bpmn:sequenceFlow id="Flow_0kr0gyv" sourceRef="Activity_1y6xe1e" targetRef="Activity_1qs84kr" />
+    <bpmn:sequenceFlow id="Flow_06ede57" sourceRef="Activity_1qs84kr" targetRef="Activity_1ebyoqv" />
+    <bpmn:sequenceFlow id="Flow_1krxy0c" sourceRef="Activity_1ebyoqv" targetRef="Activity_0fsgphx" />
+    <bpmn:sequenceFlow id="Flow_15rhmp6" sourceRef="Activity_15hx7k4" targetRef="Activity_0a1n3z5" />
+    <bpmn:sequenceFlow id="Flow_0oarbrk" sourceRef="Activity_0fsgphx" targetRef="Gateway_0mapyv9" />
+    <bpmn:endEvent id="Event_10zo2pn" name="Invitee has declined">
+      <bpmn:incoming>Flow_0vu42ub</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0vu42ub" sourceRef="Activity_17abbqd" targetRef="Event_10zo2pn" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1a5z4vh">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="220" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0mapyv9_di" bpmnElement="Gateway_0mapyv9" isMarkerVisible="true">
+        <dc:Bounds x="1715" y="213" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1768" y="231" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g5l5cq_di" bpmnElement="Activity_0lfuc25">
+        <dc:Bounds x="1850" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_017q5x1_di" bpmnElement="Activity_17abbqd">
+        <dc:Bounds x="1870" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0whgml4_di" bpmnElement="Activity_1dec2n9">
+        <dc:Bounds x="2060" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_149p9lb_di" bpmnElement="Activity_1nnlp8i">
+        <dc:Bounds x="2270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ya4of0_di" bpmnElement="Event_0ya4of0">
+        <dc:Bounds x="2862" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2852" y="145" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12f556z_di" bpmnElement="Activity_1rcdy1f">
+        <dc:Bounds x="2640" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bhlhpe_di" bpmnElement="Activity_1ws6t5r">
+        <dc:Bounds x="280" y="198" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ckpx5l" bpmnElement="Activity_054ked3">
+        <dc:Bounds x="480" y="198" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0v8yokb" bpmnElement="Activity_15hx7k4">
+        <dc:Bounds x="660" y="198" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07pmooc_di" bpmnElement="Event_1hglxcs">
+        <dc:Bounds x="2502" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2482" y="145" width="76" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0d4v228" bpmnElement="Activity_0a1n3z5">
+        <dc:Bounds x="850" y="198" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0j673yx" bpmnElement="Activity_1y6xe1e">
+        <dc:Bounds x="1020" y="198" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1l0b66j" bpmnElement="Activity_1qs84kr">
+        <dc:Bounds x="1200" y="198" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_16478kg" bpmnElement="Activity_1ebyoqv">
+        <dc:Bounds x="1370" y="198" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1kmn0no" bpmnElement="Activity_0fsgphx">
+        <dc:Bounds x="1550" y="198" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_10zo2pn_di" bpmnElement="Event_10zo2pn">
+        <dc:Bounds x="2862" y="312" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2853" y="355" width="54" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1iru9qe_di" bpmnElement="Flow_1iru9qe">
+        <di:waypoint x="188" y="238" />
+        <di:waypoint x="280" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1th9w25_di" bpmnElement="Flow_1th9w25">
+        <di:waypoint x="1740" y="213" />
+        <di:waypoint x="1740" y="120" />
+        <di:waypoint x="1850" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1746" y="164" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cgr6cb_di" bpmnElement="Flow_1cgr6cb">
+        <di:waypoint x="1740" y="263" />
+        <di:waypoint x="1740" y="330" />
+        <di:waypoint x="1870" y="330" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1748" y="293" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ja6af1_di" bpmnElement="Flow_1ja6af1">
+        <di:waypoint x="1950" y="120" />
+        <di:waypoint x="2060" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18txlrg_di" bpmnElement="Flow_18txlrg">
+        <di:waypoint x="2160" y="120" />
+        <di:waypoint x="2270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fhvvpw_di" bpmnElement="Flow_1fhvvpw">
+        <di:waypoint x="2740" y="120" />
+        <di:waypoint x="2862" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00b6xxh_di" bpmnElement="Flow_00b6xxh">
+        <di:waypoint x="2370" y="120" />
+        <di:waypoint x="2502" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16yv27j_di" bpmnElement="Flow_16yv27j">
+        <di:waypoint x="380" y="238" />
+        <di:waypoint x="480" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15x02g7_di" bpmnElement="Flow_15x02g7">
+        <di:waypoint x="580" y="238" />
+        <di:waypoint x="660" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nl0ip8_di" bpmnElement="Flow_0nl0ip8">
+        <di:waypoint x="2538" y="120" />
+        <di:waypoint x="2640" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_09szsah" bpmnElement="Flow_0ah47e7">
+        <di:waypoint x="950" y="238" />
+        <di:waypoint x="1020" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_04jwux4" bpmnElement="Flow_0kr0gyv">
+        <di:waypoint x="1120" y="238" />
+        <di:waypoint x="1200" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0tc6zfv" bpmnElement="Flow_06ede57">
+        <di:waypoint x="1300" y="238" />
+        <di:waypoint x="1370" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_01666bm" bpmnElement="Flow_1krxy0c">
+        <di:waypoint x="1470" y="238" />
+        <di:waypoint x="1550" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15rhmp6_di" bpmnElement="Flow_15rhmp6">
+        <di:waypoint x="760" y="238" />
+        <di:waypoint x="850" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oarbrk_di" bpmnElement="Flow_0oarbrk">
+        <di:waypoint x="1650" y="238" />
+        <di:waypoint x="1715" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vu42ub_di" bpmnElement="Flow_0vu42ub">
+        <di:waypoint x="1970" y="330" />
+        <di:waypoint x="2862" y="330" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
