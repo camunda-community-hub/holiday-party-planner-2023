@@ -1,4 +1,4 @@
-https://github.com/camunda-community-hub/holiday-party-planner-2023# 2023 Holiday Party Planner
+# 2023 Holiday Party Planner
 
 The 2023 holiday season has started, and with that comes many activities and events. Planning a party and making sure the logistics behind inviting friends and family, as well as sending them gifts can become a nightmare. This project simplifies those tasks by using some newer Camunda Connectors to automate the holidays!
 
